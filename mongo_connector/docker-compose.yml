@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  # Mongo Service
+  mongodb_instance:
+    container_name: st_connections_hackathon_mongodb
+    image: mongo:4.4.20
+    ports:
+      - '8975:27017'
+    restart: on-failure
+
+  # Streamlit App
+  streamlit_app:
+    container_name: st_connections_hackathon_mongo_app
+    build: .
+    ports:
+      - '8976:8505'
+    restart: on-failure
